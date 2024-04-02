@@ -6,9 +6,9 @@ const testService = coreApi
   })
   .injectEndpoints({
     endpoints: (builder) => ({
-      testApiConnectivity: builder.query({
+      testApiConnectivity: builder.query<unknown, void>({
         query: () => ({
-          url: "/",
+          url: "/test/",
           method: "GET",
         }),
         providesTags: ["test"],
