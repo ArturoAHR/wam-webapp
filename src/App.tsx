@@ -1,3 +1,12 @@
+import { Providers } from "@modules/core";
+import { Test } from "./pages/test/Test";
+
 export const App = () => {
-  return <div className="app">Hello world</div>;
+  return (
+    <Providers>
+      <div>
+        <Test />
+      </div>
+    </Providers>
+  );
 };
