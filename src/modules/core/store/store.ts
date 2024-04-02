@@ -1,10 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
+import { coreApi } from "../services/core";
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    [coreApi.reducerPath]: coreApi.reducer,
+  },
   middleware: (getDefaultMiddleWare) => {
-    return getDefaultMiddleWare();
+    return getDefaultMiddleWare().concat(coreApi.middleware);
   },
 });
 
