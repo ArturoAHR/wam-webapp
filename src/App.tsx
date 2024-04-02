@@ -1,3 +1,9 @@
+import { Providers } from "@modules/core";
+
 export const App = () => {
-  return <div className="app">Hello world</div>;
+  return (
+    <Providers>
+      <div>hello</div>
+    </Providers>
+  );
 };
