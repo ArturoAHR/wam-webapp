@@ -13,7 +13,9 @@
     "test:ui-coverage": "vitest --ui --coverage",
     "test:coverage": "vitest --coverage",
     "preview": "vite preview",
-    "prepare": "husky"
+    "prepare": "husky",
+    "docker:dev": "docker compose --env-file .env -f ./.docker/docker-compose.development.yml -p wam up",
+    "docker:prod": "docker build --no-cache -t wam-api:latest ."
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.3",
