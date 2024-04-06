@@ -1,0 +1,12 @@
+services:
+  webapp:
+    container_name: wam-webapp
+    build: 
+      context: ../
+      dockerfile: ./.docker/Dockerfile.development
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./..:/usr/app
+      - /usr/app/node_modules
+    
