@@ -2,8 +2,6 @@ name: Deploy
 on: 
   push:
     branches: [main]
-  pull_request:
-    branches: [develop] # Remove after pipeline is functional
 jobs:
   deploy:
     environment: Production
