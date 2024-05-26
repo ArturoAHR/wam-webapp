@@ -52,6 +52,7 @@ jobs:
       - name: Generate .env file in EC2 instance
         uses: ./.github/workflows/generate-env
         with:
+          environment: "production"
           api-url: ${{ secrets.API_URL }}
       
       - name: Build app image

@@ -3,6 +3,8 @@ name: Generate .env File
 on:
   workflow_call:
     inputs:
+      environment:
+        required: true
       api-url:
         required: true
 
@@ -13,6 +15,7 @@ runs:
       shell: bash -l {0}  
       run: |
         cat << EOF > .env
+        VITE_ENVIRONMENT=${{ inputs.environment }}
         VITE_API_URL=${{ inputs.api-url }}
         EOF
         cat .env
