@@ -1,0 +1,26 @@
+name: Generate .env File
+
+on:
+  workflow_call:
+    inputs:
+      aws-ec2-security-group-id:
+        required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Revoke runner IP Address from EC2 instance security group whitelist
+      shell: bash -l {0}
+      run: |
+        aws ec2 revoke-security-group-ingress \
+          --group-id ${{ inputs.aws-ec2-security-group-id }} \
+          --protocol tcp \
+          --port 22 \
+          --cidr ${GITHUB_RUNNER_IP}/32
+        
+    - name: Remove Docker config
+      shell: bash -l {0}
+      run: |
+        rm -f /home/runner/.docker/config.json
+
+
